@@ -1,0 +1,65 @@
+# (1)コンパイラ
+CC  = g++
+# (2)コンパイルオプション
+CFLAGS    = -Wall -g # enable debugger
+# (3)実行ファイル名
+TARGET  = calcpi
+# (4)コンパイル対象のソースコード
+SRCS    = ../src/main.cpp
+SRCDIR  = ../src
+# output dir
+OUT = .
+# (5)オブジェクトファイル名
+# OBJS    = $(SRCS:.cpp=.o)
+
+LIBSHAREDSRC = $(SRCDIR)/viete.cpp $(SRCDIR)/gregory.cpp  $(SRCDIR)/ramanujan.cpp
+LIBSTATICSRC = $(SRCDIR)/factorial.cpp
+
+# (6)インクルードファイルのあるディレクトリパス
+INCDIR  = -I../include
+ 
+# (7)ライブラリファイルのあるディレクトリパス
+LIBDIR  = -L.
+ 
+# (8)追加するライブラリファイル
+LIBS    = -lV -lR -lG -lfactorial
+
+# # (9)ターゲットファイル生成
+# $(TARGET): $(OBJS)
+# 	$(CC) -o $@ $^ $(LIBDIR) $(LIBS)
+
+# # (10)オブジェクトファイル生成
+# $(OBJS): $(SRCS)
+# 	$(CC) $(CFLAGS) $(INCDIR) -c $(SRCS)
+
+# $(LIBSHARED) : 
+# 	$(CC) -shared -o $(LIBSHAREDSRC:.cpp=.dll) $(INCDIR) -c $(SRCS)/$(LIBSHAREDSRC)
+
+# g++ -shared -o libG.dll  -I../include -c ../src/gregory.cpp
+
+# $(LIBSTATIC) : $()
+
+# $(LIBSHARED) = libV.dll libR.dll libG.dll
+
+libV.dll : $(LIBSHAREDSRC)
+	$(CC) -shared -o $@ $(INCDIR) -c $(SRCDIR)/viete.cpp
+
+libR.dll : $(LIBSHAREDSRC)
+	$(CC) -shared -o $@ $(INCDIR) -c $(SRCDIR)/ramanujan.cpp
+
+libG.dll : $(LIBSHAREDSRC)
+	$(CC) -shared -o $@ $(INCDIR) -c $(SRCDIR)/gregory.cpp
+
+# Generate an executable.
+$(TARGET): $(LIBSHAREDSRC)
+	$(CC) $(CFLAGS) $(INCDIR) -c $(SRCS) $(LIBDIR) $(LIBS) -lfactorial
+# g++ -o calcpi ../src/main.cpp -I../include -L. -lV -lR -lG -lfactorial
+
+# $(LIBSHARED) : $(LIBSHAREDSRC)
+# 	$(CC) -shared -o $(LIBSHAREDSRC:.cpp=.dll) $(INCDIR) -c $(SRCS)/$(LIBSHAREDSRC)
+
+# (11)"make all"で make cleanとmakeを同時に実施。
+all: clean $(OBJS) $(TARGET)
+# (12).oファイル、実行ファイル、.dファイルを削除
+clean:
+	-rm -f $(OBJS) $(TARGET) *.d

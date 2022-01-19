@@ -4,9 +4,10 @@ Build with g++ only
     - `cd build`
 
 - Build shared libraries
-    - `g++ -shared -o libV.so  -I../include -c ../src/viete.cpp`
-    - `g++ -shared -o libR.so  -I../include -c ../src/ramanujan.cpp`
-    - `g++ -shared -o libG.so  -I../include -c ../src/gregory.cpp`
+    - `g++ -shared -o libV.dll  -I../include -c ../src/viete.cpp`
+    - `g++ -shared -o libR.dll  -I../include -c ../src/ramanujan.cpp`
+    - `g++ -shared -o libG.dll  -I../include -c ../src/gregory.cpp`
+    - Use ".so" extention instead when your OS is linux or mac.
 
 
 - Build a static library.
