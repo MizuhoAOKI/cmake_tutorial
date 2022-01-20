@@ -4,5 +4,5 @@
 // Calculate pi with Viete's formula.
 double calc_pi_viete(){
     factorial(1);
-    return 1;
+    return 3.0;
 }
