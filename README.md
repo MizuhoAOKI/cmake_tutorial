@@ -9,6 +9,23 @@ This note helps you to understand functions and how to use them properly.
 2. Ramanujan's method
 3. Gregory's method
 
+#### Output
+```
+>cmake_tutorial/build$./calcpi 
+[main.cpp] This program calculate PI in three different methods.
+[main.cpp] Number of iterations = 8
+
+[viete.cpp] Calculating PI with Viete's formula.
+[ramanujan.cpp] Calculating PI with Ramanujan's formula.
+[gregory.cpp] Calculating PI with Gregory's formula.
+
+[Results]
+  Viete's method     : PI = 3.141588 
+  Ramanujan's method : PI = 3.141593 
+  Gregory's method   : PI = 3.252366 
+```
+
+
 #### Directory tree
 - cmake_tutorial
     - include 
@@ -23,7 +40,7 @@ This note helps you to understand functions and how to use them properly.
         - ramanujan.cpp
         - viete.cpp
                                       
-Now, we build the above program in three different ways.
+Now, we build the project in three different ways.
 1. gcc
 2. gcc + make
 3. gcc + make + cmake
@@ -86,7 +103,7 @@ Install gcc and make.
     # compiler
     CC  = g++
     # compile options
-    CFLAGS    = -Wall # enable debugger
+    CFLAGS    = -Wall
     # name of executable
     TARGET  = calcpi
     # target src code
@@ -138,7 +155,7 @@ It is an excellent tool extending make to help building C/C++ projects.
 
 For example, 
 - Better support for complex directory structures.
-- Easy to specify dependant libraries.
+- Easy to specify dependent libraries.
 - Multiple executables can be generated at once.
 
 ### Environment setup
@@ -162,8 +179,8 @@ Install gcc, make, and cmake.
     project( CALCPI CXX)
 
     # set build options
-    # set(CMAKE_CXX_FLAGS "-g")# Debug mode
-    set(CMAKE_CXX_FLAGS "-O2 -march=native -std=c++11 -Wall")# release mode 
+    # set(CMAKE_CXX_FLAGS "-g")# debug mode
+    set(CMAKE_CXX_FLAGS "-O2 -march=native -std=c++11 -Wall")# release mode
 
     # set include directories
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)

@@ -1,8 +1,20 @@
 #include "factorial.hpp"
-#include <stdio.h>
 
-// Calculate factorial of given integer
+// calculate factorial of given positive integer
 int factorial(int n){
-    printf("factorial %d\n", n);
-    return 1;
+
+    // recursive implementation of factorial
+    if (n < 0)
+    {
+        return -1; // error
+    } 
+    else if (n == 0)
+    {
+        return 1;
+    }
+    else 
+    {
+        return n * factorial(n - 1);
+    }
+
 }
