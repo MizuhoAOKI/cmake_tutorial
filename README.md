@@ -12,7 +12,7 @@ This note helps you to understand functions and how to use them properly.
 #### Output
 ```
 >cmake_tutorial/build$./calcpi 
-[main.cpp] This program calculate PI in three different methods.
+[main.cpp] This program calculates PI in three different methods.
 [main.cpp] Number of iterations = 8
 
 [viete.cpp] Calculating PI with Viete's formula.

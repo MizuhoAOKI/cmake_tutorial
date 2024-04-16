@@ -5,7 +5,7 @@
 
 int main(){
     // Main process starts.
-    printf("[main.cpp] This program calculate PI in three different methods.\n");
+    printf("[main.cpp] This program calculates PI in three different methods.\n");
 
     // set number of iterations
     int num_iter = 8;
